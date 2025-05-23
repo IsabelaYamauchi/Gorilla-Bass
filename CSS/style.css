@@ -76,35 +76,92 @@ main{
   height: 100%;
 }
 
-.winston_container {
+
+
+.lifebar_w {
   position: absolute;
   bottom: 0;
-  left: 0%;
+  left: 2%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 8px;
 }
+
+#lifebar {
+  
+  display: flex;
+  gap: 2px;
+}
+
+.barraVida {
+  width: 20px;
+  height: 40px;
+  background-color: #FFFFFF;
+  border: 1px solid #aaa;
+  border-radius: 3px;
+  
+}
+
+.barraVida.hp {
+  background-color: white;
+  
+}
+
+.barraVida.armor {
+  background-color: #F06719;
+  
+}
+
 .winton{
-  position: absolute;
   height: 400px;
   display: flex;
   bottom: 0;
   left: 2%;
 }
 
-.vida_w {
-   position: absolute;
-   bottom: 420px;
+
+/* */
+.lifebar_r {
+  position: absolute;
+  bottom: 0;
+  right: 2%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+#lifebar {
+  
+  display: flex;
+  gap: 2px;
+}
+
+.barraVida {
+  width: 20px;
+  height: 40px;
+  background-color: #FFFFFF;
+  border: 1px solid #aaa;
+  border-radius: 3px;
+  
+}
+
+.barraVida.hp {
+  background-color: white;
+  
+}
+
+.barraVida.armor {
+  background-color: #F06719;
+  
 }
 
 .reaper{
-  position: absolute;
   height: 330px;
   display: flex;
   transform: scaleX(-1);
-  position: absolute;
   bottom: 0;
-  left: 75%;
 }
 
 
