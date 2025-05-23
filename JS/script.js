@@ -1,25 +1,25 @@
 /* Winston */
 
-const maxLifeW = 1000;
+const maxVidaW = 1000;
 const limiteArmor = 750;
 const barrasVida = 20;
-const quntVidaPorBarra = maxLifeW / barrasVida;
+const quntVidaPorBarra = maxVidaW / barrasVida;
 
-let vidaAtualW = maxLifeW;
-const barW = document.getElementById('lifebarW')
+let vidaAtualW = maxVidaW;
+const barraW = document.getElementById('lifebarW')
 
 
 
-function updateBar(barElement , life) {
-    const segs = barElement.children;
+function updateBar(barElemento , vida) {
+    const segs = barElemento.children;
 
 const hpSegs = Math.min (
-    Math.ceil(Math.min(life, limiteArmor) / quntVidaPorBarra),
+    Math.ceil(Math.min(vida, limiteArmor) / quntVidaPorBarra),
     barrasVida
 )
 
-const armorSegs = life > limiteArmor
-    ? Math.ceil((life - limiteArmor) / quntVidaPorBarra)
+const armorSegs = vida > limiteArmor
+    ? Math.ceil((vida - limiteArmor) / quntVidaPorBarra)
     :0;
 
 for (let i = 0; i < barrasVida; i++) {
@@ -32,9 +32,21 @@ for (let i = 0; i < barrasVida; i++) {
 }
 }
 
-updateBar(barW , vidaAtualW);
+updateBar(barraW , vidaAtualW);
+
+/* Reaper */
+
+const maxVidaR = 20;
+const barrasVidaR = 10;
+const quntVidaPorBarraR = maxVidaW / barrasVida;
+
+let vidaAtualR = maxVidaW;
+const barraR = document.getElementById('lifebarR')
+
+updateBar(barraR , vidaAtualR);
 
 
+/*Botoes*/
 
 
 

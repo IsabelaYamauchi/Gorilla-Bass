@@ -25,7 +25,7 @@ a {
 
 ul {
   display: flex;
-  gap: 20px; 
+  gap: 30px; 
   justify-content: center; 
   padding: 0;
 }
@@ -45,8 +45,8 @@ li {
 
 main{
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
+    
 }
 
 .fundo_todo {
@@ -147,15 +147,6 @@ main{
   
 }
 
-.barraVida.hp {
-  background-color: white;
-  
-}
-
-.barraVida.armor {
-  background-color: #F06719;
-  
-}
 
 .reaper{
   height: 330px;
@@ -164,9 +155,38 @@ main{
   bottom: 0;
 }
 
+.botoes {
+  background-color: #353E62;
+  height: 136px;
+  display: flex;
+  align-items: center;
+}
 
+.ataque1 {
+    width: 205px; 
+    height: 94px;
+    margin-left: 30px;
+    background-size: contain;
+    border-radius: 18px;
+    background-image: url(../assets/arma1.png)
+}
 
-
+.ataque2 {
+  width: 205px; 
+  height: 94px;
+  margin-left: 30px;
+  background-size: contain;
+  border-radius: 18px;
+  background-image: url(../assets/arma2.png)
+}
+.cura {
+  width: 119px; 
+  height: 123px;
+  margin-left: 30px;
+  background-size: contain;
+  border-radius: 18px;
+  background-image: url(../assets/cura.png)
+}
 .start {
     position: absolute;
     height: 192px;
@@ -177,11 +197,11 @@ main{
 
 
 footer {
-    background-color: #353E62;
+    background-color: #C2D9F2;
     height:82px ;
     display: flex;
     justify-content: center;
     align-items: center;
     font-family: "Space Mono", monospace;
-    color: #C2D9F2;
+    color: #F06719;
 }
