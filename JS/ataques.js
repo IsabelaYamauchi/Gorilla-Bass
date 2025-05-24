@@ -6,32 +6,57 @@ const cura = document.getElementById('cura')
 
 function onKeyPress(e) {
     const tecla = e.key.toLowerCase();
+    
+    if (ataque1.disabled || ataque2.disabled || cura.disabled) {
+        return;
+    }
 
     if (tecla === 'q') {
         console.log('Winston utilizou seu ataque leve matando 2 reapers');
         e.preventDefault();
         botaoQ(2);
         ataque1.click();
-        setTimeout
-        ataqueReaper()
+        desabilitaWinston();
+        setTimeout(function() {
+        ataqueReaper();
+        habilitaWinston();
+        }, 2000);
 
     } else if (tecla === 'w') {
         console.log('Winston utilizou seu ataque pesado matando 4 reapers');
         e.preventDefault();
         botaoW(4);
         ataque2.click();
-        ataqueReaper()
+        desabilitaWinston();
+        setTimeout(function() {
+        ataqueReaper();
+        habilitaWinston();
+        }, 2000);
 
     } else if (tecla === 'e') {
         e.preventDefault();
         botaoE(500);
-        console.log('botao');
+        console.log('Cura acionada, Winston se curou');
         cura.click();
+        desabilitaWinston();
+        setTimeout(function() {
+        ataqueReaper();
+        habilitaWinston();
+        }, 2000);
     }
 }
 document.addEventListener('keydown' , onKeyPress);
 
+export function desabilitaWinston() {
+  console.log('Desabilitando skills do Winston');
+  ataque1.disabled = true;
+  ataque2.disabled = true;
+  cura.disabled    = true;
+}
 
-
-
-
+export function habilitaWinston() {
+  console.log('Habilitando skills do Winston após Reaper atacar!');
+  ataque1.disabled = false;
+  ataque2.disabled = false;
+  cura.disabled    = false;
+}

@@ -122,7 +122,9 @@ export function ataqueReaper () {
 
 /* Definindo a array do reaper (true = cada reaper vivo) */
 
-
+export function desabilitaWinston(){
+    
+}
 /*Troca de turno de ataque Reaper x Winston*/
 
 
