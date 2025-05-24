@@ -36,9 +36,8 @@ updateBarW(barraW , vidaAtualW);
 
 /* Reaper */
 
-var numReaper = 100;
-var reapers = [];
-var reaperAtual = 0;
+var totalReapers = 100;
+var reapers = []
 const maxVidaR = 20;
 const barrasVidaR = 10;
 const quntVidaPorBarraR = maxVidaR / barrasVidaR;
@@ -60,11 +59,19 @@ export function updateBarR (barElementoR , vidaR) {
         segsR[i].classList.add('hpR');
     }
 }
-
 updateBarR(barraR , vidaAtualR);
 
+for ( let i = 0; i <= totalReapers; i++){
+    console.log(reapers.length);
+    reapers.push(true);
+    console.log(reapers.length);
+}
 
-/*Botoes*/
+
+
+
+
+/*Habilidades Winston*/
 
 
 export function botaoQ (qntDano) {
@@ -88,6 +95,15 @@ export function botaoE (qntCura) {
     console.log('vida depois', vidaAtualW);
     updateBarR(barraW , vidaAtualW);
 }
+/*Troca de turno de ataque Reaper x Winston*/
 
 
 
+/*Habilidades Reaper*/
+
+export function ataqueReaper () {
+    console.log ('vida antes', vidaAtualW);
+    vidaAtualW = Math.max(0, vidaAtualW - 500)
+    console.log ('vida depois', vidaAtualW);
+    updateBarW(barraW , vidaAtualW)
+}
