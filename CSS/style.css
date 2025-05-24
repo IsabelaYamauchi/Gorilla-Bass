@@ -198,6 +198,13 @@ main{
     align-items: center;
 }
 
+#ataque1:disabled,
+#ataque2:disabled,
+#cura:disabled {
+  background-color: gray;
+  opacity: 0.6;
+  cursor: not-allowed;
+}
 
 footer {
     background-color: #C2D9F2;

@@ -8,7 +8,6 @@ const quntVidaPorBarra = maxVidaW / barrasVidaW;
 let vidaAtualW = maxVidaW;
 const barraW = document.getElementById('lifebarW')
 
-
 export function updateBarW(barElementoW , vida) {
     const segsW = barElementoW.children;
 
@@ -70,9 +69,8 @@ const quntVidaPorBarraR = maxVidaR / barrasVidaR;
 let vidaAtualR = maxVidaR;
 
 for ( let i = 0; i < totalReapers; i++){
-    console.log(reapers.length);
     reapers.push(true);
-    console.log(reapers.length);
+    console.log('Os reapers estão surgindo para eliminar +1 membro da overwatch');
 }
 
 const barraR = document.getElementById('lifebarR')
@@ -88,11 +86,10 @@ export function updateBarR(barElementR) {
     segsR.length
   );
 
-  // 3.1) limpa todas as classes
   for (var i = 0; i < segsR.length; i++) {
     segsR[i].classList.remove('hpR');
   }
-  // 3.2) pinta só os primeiros hpSegsR segmentos
+
   for (var i = 0; i < hpSegsR; i++) {
     segsR[i].classList.add('hpR');
   }
@@ -109,23 +106,21 @@ export function comportamentoAtaqueWinston(contagemDano){
 }
 
 
-
-/*Habilidades Reaper*/
+/*Habilidades Reaper ele irá dar um dano entre 0 e 20 a cada vez que chegar seu turno*/
 
 export function ataqueReaper () {
-    console.log ('vida antes', vidaAtualW);
+    console.log ('Reaper se prepara para atacar');
     var danoReaper =  Math.floor(Math.random() * 20) + 1
     vidaAtualW = Math.max(0, vidaAtualW - danoReaper)
-    console.log ('vida depois', vidaAtualW);
+    console.log ('Realizar atacou dando', danoReaper, 'no Winston');
+    console.log
     updateBarW(barraW , vidaAtualW)
 }
 
-/* Definindo a array do reaper (true = cada reaper vivo) */
 
-export function desabilitaWinston(){
-    
-}
-/*Troca de turno de ataque Reaper x Winston*/
+
+
+
 
 
 

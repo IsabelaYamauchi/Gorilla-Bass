@@ -48,7 +48,7 @@ function onKeyPress(e) {
 document.addEventListener('keydown' , onKeyPress);
 
 export function desabilitaWinston() {
-  console.log('Desabilitando skills do Winston');
+  console.log('Desabilitando skills do Winston, é a vez do Reaper');
   ataque1.disabled = true;
   ataque2.disabled = true;
   cura.disabled    = true;
