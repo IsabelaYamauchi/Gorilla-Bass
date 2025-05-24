@@ -12,7 +12,7 @@ const barraW = document.getElementById('lifebarW')
 export function updateBarW(barElementoW , vida) {
     const segsW = barElementoW.children;
 
-const hpSegsW = Math.min (
+    const hpSegsW = Math.min (
     Math.ceil(Math.min(vida, limiteArmor) / quntVidaPorBarra),
     barrasVidaW
 )
@@ -33,6 +33,32 @@ for (let i = 0; i < barrasVidaW; i++) {
 }
 updateBarW(barraW , vidaAtualW);
 
+/*Habilidades Winston*/
+
+
+export function botaoQ(qntDano){
+    while ( qntDano > 0 && reapers.length > 0){
+        reapers.pop();
+        qntDano--;
+    }
+    console.log('2 reapers morreram, faltam ',reapers.length)
+    updateBarR(barraR)
+}
+
+export function botaoW(qntDano){
+    while ( qntDano > 0 && reapers.length > 0){
+        reapers.pop();
+        qntDano--;
+    }
+    console.log('4 reapers morreram, faltam ',reapers.length)
+    updateBarR(barraR)
+}
+
+export function botaoE (qntCura) {
+    vidaAtualW = Math.min(maxVidaW,vidaAtualW + qntCura)
+    console.log('Winstou encheu vida, está com', vidaAtualW, 'De vida atual');
+    updateBarW(barraW , vidaAtualW);
+}
 
 /* Reaper */
 
@@ -41,61 +67,46 @@ var reapers = []
 const maxVidaR = 20;
 const barrasVidaR = 10;
 const quntVidaPorBarraR = maxVidaR / barrasVidaR;
-
 let vidaAtualR = maxVidaR;
-const barraR = document.getElementById('lifebarR')
 
-export function updateBarR (barElementoR , vidaR) {
-    const segsR = barElementoR.children;
-
-    const hpSegsR = Math.min (
-    Math.ceil(Math.min(vidaR , maxVidaR) / quntVidaPorBarraR),
-    barrasVidaR);
-
-    for (let i = 0; i < segsR.length; i++) {
-        segsR[i].classList.remove('hpR');
-    }
-    for (let i = 0; i < hpSegsR; i++) {
-        segsR[i].classList.add('hpR');
-    }
-}
-updateBarR(barraR , vidaAtualR);
-
-for ( let i = 0; i <= totalReapers; i++){
+for ( let i = 0; i < totalReapers; i++){
     console.log(reapers.length);
     reapers.push(true);
     console.log(reapers.length);
 }
 
+const barraR = document.getElementById('lifebarR')
 
+export function updateBarR(barElementR) {
+  var aliveCount = reapers.length;
+  var segsR      = barElementR.children;
+  // cada segmento representa totalReapers / segsR.length de Reapers
+  var reapersPerSeg = totalReapers / segsR.length;
+  // calcula quantos segmentos “cheios” devemos pintar
+  var hpSegsR = Math.min(
+    Math.ceil(aliveCount / reapersPerSeg),
+    segsR.length
+  );
 
-
-
-/*Habilidades Winston*/
-
-
-export function botaoQ (qntDano) {
-    console.log('vida antes', vidaAtualR);
-    vidaAtualR = Math.max(0,vidaAtualR - qntDano)
-    console.log('vida depois', vidaAtualR);
-    updateBarR(barraR , vidaAtualR);
+  // 3.1) limpa todas as classes
+  for (var i = 0; i < segsR.length; i++) {
+    segsR[i].classList.remove('hpR');
+  }
+  // 3.2) pinta só os primeiros hpSegsR segmentos
+  for (var i = 0; i < hpSegsR; i++) {
+    segsR[i].classList.add('hpR');
+  }
 }
 
+updateBarR(barraR)
 
-export function botaoW (qntDano) {
-    console.log('vida antes', vidaAtualR);
-    vidaAtualR = Math.max(0,vidaAtualR - qntDano)
-    console.log('vida depois', vidaAtualR);
-    updateBarR(barraR , vidaAtualR);
+export function comportamentoAtaqueWinston(contagemDano){
+    while ( contagemDano > 0 && reapers.length > 0){
+        reapers.pop();
+        contagemDano--;
+    }
+    updateBarR(barraR)
 }
-
-export function botaoE (qntCura) {
-    console.log('vida antes', vidaAtualW);
-    vidaAtualW = Math.min(maxVidaW,vidaAtualW + qntCura)
-    console.log('vida depois', vidaAtualW);
-    updateBarR(barraW , vidaAtualW);
-}
-/*Troca de turno de ataque Reaper x Winston*/
 
 
 
@@ -103,7 +114,17 @@ export function botaoE (qntCura) {
 
 export function ataqueReaper () {
     console.log ('vida antes', vidaAtualW);
-    vidaAtualW = Math.max(0, vidaAtualW - 500)
+    var danoReaper =  Math.floor(Math.random() * 20) + 1
+    vidaAtualW = Math.max(0, vidaAtualW - danoReaper)
     console.log ('vida depois', vidaAtualW);
     updateBarW(barraW , vidaAtualW)
 }
+
+/* Definindo a array do reaper (true = cada reaper vivo) */
+
+
+/*Troca de turno de ataque Reaper x Winston*/
+
+
+
+

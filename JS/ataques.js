@@ -6,21 +6,23 @@ const cura = document.getElementById('cura')
 
 function onKeyPress(e) {
     const tecla = e.key.toLowerCase();
-    console.log('tecla');
 
     if (tecla === 'q') {
-        console.log('botaoQ');
+        console.log('Winston utilizou seu ataque leve matando 2 reapers');
         e.preventDefault();
         botaoQ(2);
         ataque1.click();
+        setTimeout
         ataqueReaper()
 
     } else if (tecla === 'w') {
+        console.log('Winston utilizou seu ataque pesado matando 4 reapers');
         e.preventDefault();
         botaoW(4);
         ataque2.click();
+        ataqueReaper()
 
-    } else if (tecla ==='e') {
+    } else if (tecla === 'e') {
         e.preventDefault();
         botaoE(500);
         console.log('botao');
@@ -29,7 +31,7 @@ function onKeyPress(e) {
 }
 document.addEventListener('keydown' , onKeyPress);
 
-/* Reaper */
+
 
 
 
