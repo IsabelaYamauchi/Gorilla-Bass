@@ -1,3 +1,19 @@
+/* Local Storage*/
+
+function jogoSalvo() {
+  const status = { vidaAtualW, contador };
+  localStorage.setItem('jogoWinston', JSON.stringify(status));
+}
+
+function loadGame() {
+  const salvo = localStorage.getItem('jogoWinston');
+  if (salvo) {
+    const { vidaAtualW: v, contador: c } = JSON.parse(salvo);
+    vidaAtualW = v;
+    contador    = c;
+  }
+}
+
 /* Winston */
 
 const maxVidaW = 1000;
@@ -41,8 +57,8 @@ export function botaoQ(qntDano){
         morteReaper();
         qntDano--;
     }
-    console.log('2 reapers morreram, faltam ',reapers.length)
-    updateBarR(barraR)
+    console.log('2 reapers morreram, faltam ',reapers.length);
+    updateBarR(barraR);
 }
 
 export function botaoW(qntDano){
@@ -51,8 +67,8 @@ export function botaoW(qntDano){
         morteReaper();
         qntDano--;
     }
-    console.log('4 reapers morreram, faltam ',reapers.length)
-    updateBarR(barraR)
+    console.log('4 reapers morreram, faltam ',reapers.length);
+    updateBarR(barraR);
 }
 
 export function botaoE (qntCura) {
@@ -75,7 +91,7 @@ for ( let i = 0; i < totalReapers; i++){
     console.log('Os reapers estão surgindo para eliminar +1 membro da overwatch');
 }
 
-const barraR = document.getElementById('lifebarR')
+const barraR = document.getElementById('lifebarR');
 
 export function updateBarR(barElementR) {
   var aliveCount = reapers.length;
@@ -97,7 +113,7 @@ export function updateBarR(barElementR) {
   }
 }
 
-updateBarR(barraR)
+updateBarR(barraR);
 
 export function comportamentoAtaqueWinston(contagemDano){
     while ( contagemDano > 0 && reapers.length > 0){
@@ -105,19 +121,19 @@ export function comportamentoAtaqueWinston(contagemDano){
         morteReaper();
         contagemDano--;
     }
-    updateBarR(barraR)
+    updateBarR(barraR);
 }
 
 
-/*Habilidades Reaper ele irá dar um dano entre 0 e 20 a cada vez que chegar seu turno*/
+/*Habilidades Reaper ele irá dar um dano entre 0 e 100 a cada vez que chegar seu turno*/
 
 export function ataqueReaper () {
     console.log ('Reaper se prepara para atacar');
-    var danoReaper =  Math.floor(Math.random() * 20) + 1
+    var danoReaper =  Math.floor(Math.random() * 100) + 1
     vidaAtualW = Math.max(0, vidaAtualW - danoReaper)
     console.log ('Reaper atacou, dando:', danoReaper, 'no Winston');
     console.log
-    updateBarW(barraW , vidaAtualW)
+    updateBarW(barraW , vidaAtualW);
 }
 
 
@@ -140,7 +156,7 @@ function morteReaper() {
 }
 
 updateCounter();
-
+loadGame();
 
 
 

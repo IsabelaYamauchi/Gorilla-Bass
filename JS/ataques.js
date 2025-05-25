@@ -35,7 +35,7 @@ function onKeyPress(e) {
 
     } else if (tecla === 'e') {
         e.preventDefault();
-        botaoE(500);
+        botaoE(200);
         console.log('Cura acionada, Winston se curou');
         cura.click();
         desabilitaWinston();
