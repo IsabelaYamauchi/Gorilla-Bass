@@ -55,7 +55,9 @@ main{
   height: 100vh;
   overflow: hidden;
   background-color: #010102;
- 
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .fundo_start {
@@ -195,7 +197,7 @@ main{
     height: 192px;
     display: flex;
     justify-content: center;
-    align-items: center;
+    
 }
 
 #ataque1:disabled,
@@ -210,8 +212,8 @@ main{
 
 .contador{
   position: absolute;
-  display: flex;
-  justify-content: flex-end;
+  right: 5%;
+  top: 15%;
   font-family: "Silkscreen", sans-serif;
   font-weight: regular;
   color: #F06719;
