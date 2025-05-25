@@ -185,12 +185,14 @@ main{
   background-image: url(../assets/arma2.png)
 }
 .cura {
-  width: 119px; 
-  height: 123px;
+  width: 107px; 
+  height: 111px;
   margin-left: 30px;
-  background-size: contain;
+  background-size: contain ;
   border-radius: 18px;
-  background-image: url(../assets/cura.png)
+  background-color: #F06719;
+  background-image: url(../assets/curaE.png)
+  
 }
 .start {
     position: absolute;
@@ -198,6 +200,13 @@ main{
     display: flex;
     justify-content: center;
     
+}
+.recomecar {
+  position: absolute;
+  color: #C2D9F2;
+  font-size: 36px;
+  font-family: "Silkscreen", sans-serif;
+  right: 5%;
 }
 
 #ataque1:disabled,
@@ -210,7 +219,7 @@ main{
   cursor: not-allowed;
 }
 
-.contador{
+#contador{
   position: absolute;
   right: 5%;
   top: 15%;

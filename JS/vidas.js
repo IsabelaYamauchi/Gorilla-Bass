@@ -38,6 +38,7 @@ updateBarW(barraW , vidaAtualW);
 export function botaoQ(qntDano){
     while ( qntDano > 0 && reapers.length > 0){
         reapers.pop();
+        morteReaper();
         qntDano--;
     }
     console.log('2 reapers morreram, faltam ',reapers.length)
@@ -47,6 +48,7 @@ export function botaoQ(qntDano){
 export function botaoW(qntDano){
     while ( qntDano > 0 && reapers.length > 0){
         reapers.pop();
+        morteReaper();
         qntDano--;
     }
     console.log('4 reapers morreram, faltam ',reapers.length)
@@ -100,6 +102,7 @@ updateBarR(barraR)
 export function comportamentoAtaqueWinston(contagemDano){
     while ( contagemDano > 0 && reapers.length > 0){
         reapers.pop();
+        morteReaper();
         contagemDano--;
     }
     updateBarR(barraR)
@@ -112,14 +115,31 @@ export function ataqueReaper () {
     console.log ('Reaper se prepara para atacar');
     var danoReaper =  Math.floor(Math.random() * 20) + 1
     vidaAtualW = Math.max(0, vidaAtualW - danoReaper)
-    console.log ('Realizar atacou dando', danoReaper, 'no Winston');
+    console.log ('Reaper atacou, dando:', danoReaper, 'no Winston');
     console.log
     updateBarW(barraW , vidaAtualW)
 }
 
 
+/* Contador */
 
+let contador = 0;
+const maxReaper = 100
+const contagem = document.getElementById('contador')
 
+function updateCounter() {
+    contagem.textContent = `${contador}/${maxReaper}`;
+}
+updateCounter();
+
+function morteReaper() {
+    if (contador < maxReaper) {
+        contador++;
+        updateCounter();
+    }
+}
+
+updateCounter();
 
 
 
