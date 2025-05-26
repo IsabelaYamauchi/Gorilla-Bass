@@ -1,3 +1,5 @@
+/*localStorage*/
+
 const STORAGE_KEY = 'estadoDoJogo';
 
 function loadGame() {
@@ -24,6 +26,8 @@ function saveGame() {
 }
 
 loadGame();
+
+/* Mostrar Game Over ou You Win */
 
 const overlay   = document.getElementById('gameOverOverlay');
 const resultImg = document.getElementById('gameOverImg');
@@ -133,9 +137,7 @@ const barraR = document.getElementById('lifebarR');
 export function updateBarR(barElementR) {
   var aliveCount = reapers.length;
   var segsR      = barElementR.children;
-  // cada segmento representa totalReapers / segsR.length de Reapers
   var reapersPerSeg = totalReapers / segsR.length;
-  // calcula quantos segmentos “cheios” devemos pintar
   var hpSegsR = Math.min(
     Math.ceil(aliveCount / reapersPerSeg),
     segsR.length
@@ -210,6 +212,5 @@ updateCounter();
 
 document.getElementById('resetGame').addEventListener('click', () => {
   localStorage.removeItem(STORAGE_KEY);
-  // recarrega a página ou reseta as variáveis manualmente:
   window.location.reload();
 });
