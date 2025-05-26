@@ -166,6 +166,17 @@ main{
   display: flex;
   align-items: center;
 }
+.qwe {
+background-color: #353E62;
+display: flex;
+padding: 5px;
+padding-left: 55px;
+justify-items: flex-start;
+gap: 30px;
+
+
+
+}
 
 .ataque1 {
     width: 205px; 
