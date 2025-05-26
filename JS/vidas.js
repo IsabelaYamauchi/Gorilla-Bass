@@ -1,16 +1,45 @@
-/* Local Storage*/
-
-function jogoSalvo() {
-  const status = { vidaAtualW, contador };
-  localStorage.setItem('jogoWinston', JSON.stringify(status));
-}
+const STORAGE_KEY = 'estadoDoJogo';
 
 function loadGame() {
-  const salvo = localStorage.getItem('jogoWinston');
-  if (salvo) {
-    const { vidaAtualW: v, contador: c } = JSON.parse(salvo);
-    vidaAtualW = v;
-    contador    = c;
+  const salvo = localStorage.getItem(STORAGE_KEY);
+  if (!salvo) return;          // nada salvo ainda
+
+  try {
+    const estado = JSON.parse(salvo);
+    vidaAtualW     = estado.vidaAtualW  ?? vidaAtualW;
+    contador       = estado.contador    ?? contador;
+    reapers        = Array(estado.reapersLeft).fill(true);
+  } catch (e) {
+    console.warn('Falha ao ler estado do jogo:', e);
+  }
+}
+
+function saveGame() {
+  const estado = {
+    vidaAtualW:    vidaAtualW,
+    contador:      contador,
+    reapersLeft:   reapers.length
+  };
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(estado));
+}
+
+loadGame();
+
+const overlay   = document.getElementById('gameOverOverlay');
+const resultImg = document.getElementById('gameOverImg');
+
+function showGameOver(vitoria) {
+  resultImg.src = vitoria
+    ? './YouWin.png'
+    : './gameOver.png';
+  overlay.classList.add('show');
+}
+
+function fimJogo() {
+  if (vidaAtualW <= 0) {
+    showGameOver(false);
+  } else if (reapers.length === 0) {
+    showGameOver(true);
   }
 }
 
@@ -44,12 +73,13 @@ for (let i = 0; i < barrasVidaW; i++) {
         segsW[i].classList.add("armor");
     }
 }
-
+    
 }
+loadGame();
 updateBarW(barraW , vidaAtualW);
 
-/*Habilidades Winston*/
 
+/*Habilidades Winston*/
 
 export function botaoQ(qntDano){
     while ( qntDano > 0 && reapers.length > 0){
@@ -59,6 +89,8 @@ export function botaoQ(qntDano){
     }
     console.log('2 reapers morreram, faltam ',reapers.length);
     updateBarR(barraR);
+    saveGame();
+    fimJogo();
 }
 
 export function botaoW(qntDano){
@@ -69,12 +101,16 @@ export function botaoW(qntDano){
     }
     console.log('4 reapers morreram, faltam ',reapers.length);
     updateBarR(barraR);
+    saveGame();
+    fimJogo();
 }
 
 export function botaoE (qntCura) {
     vidaAtualW = Math.min(maxVidaW,vidaAtualW + qntCura)
     console.log('Winstou encheu vida, está com', vidaAtualW, 'De vida atual');
     updateBarW(barraW , vidaAtualW);
+    saveGame();
+    fimJogo();
 }
 
 /* Reaper */
@@ -85,6 +121,7 @@ const maxVidaR = 20;
 const barrasVidaR = 10;
 const quntVidaPorBarraR = maxVidaR / barrasVidaR;
 let vidaAtualR = maxVidaR;
+loadGame();
 
 for ( let i = 0; i < totalReapers; i++){
     reapers.push(true);
@@ -111,9 +148,12 @@ export function updateBarR(barElementR) {
   for (var i = 0; i < hpSegsR; i++) {
     segsR[i].classList.add('hpR');
   }
+    
+    
 }
 
 updateBarR(barraR);
+
 
 export function comportamentoAtaqueWinston(contagemDano){
     while ( contagemDano > 0 && reapers.length > 0){
@@ -121,6 +161,7 @@ export function comportamentoAtaqueWinston(contagemDano){
         morteReaper();
         contagemDano--;
     }
+    saveGame();
     updateBarR(barraR);
 }
 
@@ -134,6 +175,8 @@ export function ataqueReaper () {
     console.log ('Reaper atacou, dando:', danoReaper, 'no Winston');
     console.log
     updateBarW(barraW , vidaAtualW);
+    saveGame();
+    fimJogo();
 }
 
 
@@ -145,6 +188,7 @@ const contagem = document.getElementById('contador')
 
 function updateCounter() {
     contagem.textContent = `${contador}/${maxReaper}`;
+    fimJogo();
 }
 updateCounter();
 
@@ -153,11 +197,19 @@ function morteReaper() {
         contador++;
         updateCounter();
     }
+    saveGame();
+    fimJogo();
+
 }
 
+updateBarW(barraW, vidaAtualW);
+updateBarR(barraR);
 updateCounter();
-loadGame();
 
 
 
-
+document.getElementById('resetGame').addEventListener('click', () => {
+  localStorage.removeItem(STORAGE_KEY);
+  // recarrega a página ou reseta as variáveis manualmente:
+  window.location.reload();
+});

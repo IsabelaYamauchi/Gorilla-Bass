@@ -4,7 +4,7 @@ const ataque1 = document.getElementById('ataque1');
 const ataque2 = document.getElementById('ataque2')
 const cura = document.getElementById('cura')
 
-function onKeyPress(e) {
+export function onKeyPress(e) {
     const tecla = e.key.toLowerCase();
     
     if (ataque1.disabled || ataque2.disabled || cura.disabled) {
@@ -14,7 +14,7 @@ function onKeyPress(e) {
     if (tecla === 'q') {
         console.log('Winston utilizou seu ataque leve matando 2 reapers');
         e.preventDefault();
-        botaoQ(2);
+        botaoQ(5);
         ataque1.click();
         desabilitaWinston();
         setTimeout(function() {
@@ -25,7 +25,7 @@ function onKeyPress(e) {
     } else if (tecla === 'w') {
         console.log('Winston utilizou seu ataque pesado matando 4 reapers');
         e.preventDefault();
-        botaoW(4);
+        botaoW(10);
         ataque2.click();
         desabilitaWinston();
         setTimeout(function() {

@@ -28,6 +28,7 @@
     <main>
         <section class="fundo_start">
             <img class="fundo" src="fundo.png" alt="Fundo">
+           
 
             <div class="lifebar_r">
                 <div id="lifebarR">
@@ -70,8 +71,7 @@
                 </div>
                 <img class="winton "src="winton.png" alt="Winston">
             </div>
-
-             
+            
 
         </section>
         <section class="botoes">
@@ -80,14 +80,19 @@
                 <button id="cura" class="cura">.</button>
                 <a class="recomecar" href="../index.html">Recomeçar</a>
         </section>
+        <section class="reiniciarProgresso"> 
+            <button id="resetGame">Reiniciar progresso Storage</button>
+        </section>
         <div id="contador">0 / 100</div>
-        
+        <div id="gameOverOverlay" class="overlay">
+        <img id="gameOverImg" alt="Resultado">
+        </div>
+
     </main>
     <footer>
         <p>Criado por Isabela Yamauchi de Souza - GitHub:IsabelaYamauchi - Projeto CP3 FIAP 1/2025</p>
         <script type="module" src="../JS/vidas.js"></script>
         <script type="module" src="../JS/ataques.js"></script>
-        
     </footer>
 </body>
 </html>
