@@ -28,7 +28,7 @@ O nome é apenas uma brincadeira com o nome Winston, já que dentro da comunidad
 1. **Objetivo:** Sobreviver às ondas de 100 Reapers.  
 2. **Controles básicos:**  
    * Movimentação: **QWE**  
-   * Ataque primário: *Q**  
+   * Ataque primário: **Q**  
    * Habilidade especial: **W**
    * Cura: **E**
      
