@@ -34,6 +34,7 @@ O nome é apenas uma brincadeira com o nome Winston, já que dentro da comunidad
 ## Integrantes
  
 **Isabela Yamauchi de Souza** – RM: 560310
+
 Curso: Análise e Desenvolvimento de Sistemas – FIAP – 1TDSPO
 
 ---
