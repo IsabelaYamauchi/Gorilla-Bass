@@ -1,6 +1,5 @@
 # 🦍 CP3 — "Gorila x 100 Humanos"
 
-**Integrante:** Isabela Yamauchi de Souza (RM: 560310)
 
 ## Nome do Jogo
 **Winton**
@@ -31,6 +30,13 @@ O nome é apenas uma brincadeira com o nome Winston, já que dentro da comunidad
    * Ataque primário: **Q**  
    * Habilidade especial: **W**
    * Cura: **E**
+  
+## Integrantes
+ 
+**Isabela Yamauchi de Souza** – RM: 560310
+Curso: Análise e Desenvolvimento de Sistemas – FIAP – 1TDSPO
+
+---
      
 
  
